@@ -48,7 +48,7 @@ function Userprofile(){
         }else{
             return;
         }
-    },[values.name, values.email,values.age,values.gender,values.mobilenumber, values.address, values.pincode, values.city, values.state,values.country]);
+    },[values.name, values.email, values.age,values.gender,values.mobilenumber, values.address, values.pincode, values.city, values.state,values.country]);
 
     const handleInput = (event) => {
         setValues(prev => ({...prev, [event.target.name]: event.target.value}))
@@ -75,7 +75,7 @@ function Userprofile(){
             event.preventDefault();
             const err = valid(values);
             setErrors(err);
-            if(err.name === "" && err.email === "" && err.age === "" && err.gender === "" && err.mobilenumber === "" && err.address === "" && err.pincode === "" && err.city === "" && err.state === "" && err.country === ""){
+            if(err.name === "" && err.email === ""&& err.age === "" && err.gender === "" && err.mobilenumber === "" && err.address === "" && err.pincode === "" && err.city === "" && err.state === "" && err.country === "" ){
                 axios.post('http://localhost:8081/userprofile', values)
                 .then(res => {
                     if(res.data === "Error"){
@@ -123,7 +123,7 @@ function Userprofile(){
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="pb-4">
                         <label className="sc-dCFHLb gxHIdr"> Enter New Email </label>
                         <div className="sc-eeDRCY hapxVj">

@@ -28,8 +28,7 @@ function Signup(){
         setValues(prev => ({...prev, [event.target.name]:event.target.value}))
     }
 
-    const handleSubmit  = (event) => {
-        if (event.keyCode === "Enter"){           
+    const handleSubmit  = (event) => {    
             event.preventDefault();
             const err = valid(values);
             setErrors(err)
@@ -37,19 +36,16 @@ function Signup(){
                 axios.post('http://localhost:8081/signup',values)
                 .then(res => {
                     console.log(res);
-                    if(res.data === "Error"){
+                    if(res.data === "Error" && res.data === "Account already created"){
                         alert("Failed! Seems you already have a account. Try logging in !!")
-                    }else if (res.data === "Account already created") {
-                        alert("Account already exists with this email. Try with a new email");
                     }
                     else{
                         alert("Account created successfully!!");
                         navigate('/');
                     }
-                })
+                })  
                 .catch(e => console.log(e));
             }
-        }
     }
 
     return (
